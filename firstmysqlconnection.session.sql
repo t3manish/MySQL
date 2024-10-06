@@ -98,11 +98,64 @@ VALUES
 
 -- ALTER TABLE Student RENAME COLUMN Column_NAME TO FIRST_NAME;
 ALTER TABLE Student RENAME Column name TO FIRST_NAME;
-SELECT * FROM Student;
-
 -- Change the name of the table Student to Student_Details.
 ALTER TABLE Student RENAME TO Student_Details;
+SELECT * FROM Student_Details;
 
 -- To Add a New Column with ALTER TABLE
 /*ALTER TABLE table_name
 ADD column_name datatype;*/
+ALTER TABLE Student_Details ADD marks INT;
+
+
+
+-- SQL DROP AND TRUNCATE Statement Examples
+DROP TABLE Student_details;
+CREATE TABLE Student_details (
+ROLL_NO INT,
+NAME VARCHAR(25),
+ADDRESS VARCHAR(25),
+PHONE INT(15) ,
+AGE INT(2) ); 
+
+-- Inserting the data in Student Table
+INSERT INTO Student_details(ROLL_NO,NAME,ADDRESS,PHONE,AGE) 
+VALUES  (1,'Ram','Delhi',941553635,24),
+(2,'Ramesh','Gurgaon',941457635,21),
+(3,'Sujit','Delhi',981553235,20),
+(4,'Suresh','Noida',911553695,21),
+(5,'Kajal','Gurgaon',891556735,28),
+(6,'Garima','Rohtak',701555635,23);
+
+TRUNCATE TABLE Student_details;
+-- After running the above query Student_details table will be truncated, i.e, 
+SELECT * FROM Student_details;
+-- the data will be deleted but the structure will remain in the memory for further operations.
+
+
+-- SQL Query to Copy, Duplicate or Backup Table
+-- SQL Backup Table with All Columns Data Example
+CREATE TABLE stud_1 AS SELECT * FROM Student_details;
+SELECT * FROM stud_1;
+
+-- SQL Backup Table with Specific Column Data Example
+CREATE TABLE stud_2 AS
+SELECT ROLL_NO,NAME FROM Student_details;
+SELECT * FROM stud_2;
+
+-- SQL Backup Table with No Data Example
+CREATE TABLE geeks_student AS SELECT * FROM student_information
+WHERE 1!=1; -- Here it returns false only columns
+SELECT * FROM geeks_student;
+
+-- Temporary Table in SQL
+CREATE TEMPORARY TABLE EmpDetails (
+    id INT,
+    name VARCHAR(25)
+);
+
+INSERT INTO EmpDetails VALUES 
+(1, 'Lalit'), 
+(2, 'Atharva');
+SELECT * FROM EmpDetails;
+DROP TEMPORARY TABLE IF EXISTS EmpDetails;
