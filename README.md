@@ -1,3 +1,2 @@
 # MySQL
-Hi This Manish
-MY SQL Notes
+Hi this is manish MYSQL Notes
