@@ -1,4 +1,4 @@
--- Source: https://www.geeksforgeeks.org/sql-tutorial/
+-- Source: https://www.geeksforgeeks.org/sql-tutorial and ChatGPT
 
 -- creating a database
 CREATE DATABASE GitHub_MYSQL;
@@ -159,3 +159,140 @@ INSERT INTO EmpDetails VALUES
 (2, 'Atharva');
 SELECT * FROM EmpDetails;
 DROP TEMPORARY TABLE IF EXISTS EmpDetails;
+
+-- -----------------------------------------------------------------------------------------------
+-- SQL Queries
+-- SQL SELECT Query
+
+CREATE TABLE Customer_Select(
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(50),
+    LastName VARCHAR(50),
+    Country VARCHAR(50),
+    Age int(2),
+  Phone int(10)
+);
+DROP TABLE Customer_Select;
+-- Insert some sample data into the Customers table
+INSERT INTO Customer_Select (CustomerID, CustomerName, LastName, Country, Age, Phone)
+VALUES (1, 'Shubham', 'Thakur', 'India','23','982653147'),
+       (2, 'Aman ', 'Chopra', 'Australia','21','789456123'),
+       (3, 'Naveen', 'Tulasi', 'Sri lanka','24','698745123'),
+       (4, 'Aditya', 'Arpan', 'Austria','21','885858505'),
+       (5, 'Nishant. Salchichas S.A.', 'Jain', 'Spain','22','789456123');
+       
+-- Retrieve Data using SELECT Query
+SELECT CustomerName, LastName FROM Customer_Select;
+
+-- Fetch All Table using SELECT Statement
+SELECT * FROM Customer_Select;
+
+-- SQL TOP, LIMIT, FETCH FIRST Clause
+/*SQL TOP Clause is used in SQL Server and Sybase to limit the number of records returned.
+SQL LIMIT Clause is utilized in MySQL, PostgreSQL, and SQLite.
+SQL FETCH FIRST Clause is part of the SQL standard and is supported by Oracle, DB2, PostgreSQL, and SQL Server (as part of OFFSET-FETCH).*/
+CREATE TABLE Employee_C (
+   EmpId INTEGER PRIMARY KEY, 
+   EmpName VARCHAR(225) NOT NULL,  
+   Email VARCHAR(225) NOT NULL,   
+   Address VARCHAR(225) NOT NULL,
+   Age INT NOT NULL,
+   Salary INT NOT NULL
+);
+INSERT INTO Employee_C (EmpId, EmpName, Email, Address, Age, Salary)
+VALUES (1, 'Shubham', 'shubham@example.com', 'India', 23, 50000.00),
+       (2, 'Aman', 'aman@example.com', 'Australia', 21, 45000.00),
+       (3, 'Naveen', 'naveen@example.com', 'Sri Lanka', 24, 55000.00),
+       (4, 'Aditya', 'aditya@example.com', 'Austria', 21, 42000.00),
+       (5, 'Nishant Saluja', 'nishant@example.com', 'Spain', 22, 48000.00);
+
+-- SQL SELECT LIMIT Clause
+SELECT * FROM Employee_C ORDER BY Salary DESC LIMIT 4;
+
+-- SQL LIMIT With OFFSET Clause Example
+SELECT * FROM Employee_C LIMIT 2 OFFSET 2;
+
+-- SQL – SELECT RANDOM
+/*SELECT col_1,col_2, ... FROM Table_Name
+ORDER BY RAND()
+LIMIT 1*/
+SELECT * FROM Employee_C 
+ORDER BY RAND() LIMIT 1;
+
+-- SQL SELECT IN Statement
+CREATE TABLE COURSE(
+    course_id INT,
+    course_name VARCHAR(20),
+    duration_of_course INT,
+    PRIMARY KEY(course_id)
+); 
+
+CREATE TABLE STUDENT(
+    roll_no INT,
+    student_name VARCHAR(20),
+    course_id INT,
+    PRIMARY KEY(roll_no)
+); 
+
+INSERT INTO COURSE(course_id, course_name, duration_of_course) 
+VALUES
+    (1, 'BCA', 3),
+    (2, 'MCA', 3),
+    (3, 'B.E.', 4),
+    (4, 'M.E.', 2),
+    (5, 'Integrated BE and ME', 5);
+
+INSERT INTO STUDENT(roll_no, student_name, course_id) 
+VALUES
+    (1, 'ANDREW', 1),
+    (2, 'BOB', 1),
+    (3, 'CHARLES', 1),
+    (4, 'DAIZY', 3),
+    (5, 'EMMANUEL', 2),
+    (6, 'FAIZAL', 2),
+    (7, 'GEORGE', 4),
+    (8, 'HARSH', 5),
+    (9, 'ISHA', 2),
+    (10, 'JULIAN', 2),
+    (11, 'KAILASH', 3),
+    (12, 'LAIBA', 5),
+    (13, 'MICHAEL', 3);
+    
+SELECT * FROM COURSE;
+SELECT * FROM STUDENT;
+    
+SELECT * FROM STUDENT
+WHERE course_id
+IN (1, 2, 3);
+    
+SELECT * FROM STUDENT WHERE course_id IN (SELECT course_id  FROM COURSE
+      WHERE duration_of_course = 3);
+      
+-- SQL SELECT Multiple 
+SELECT EmpId, EmpName, Email, Address, Age, Salary
+FROM Employee_C 
+WHERE Address = 'India';
+
+-- SQL SELECT Date
+CREATE TABLE Orders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATETIME,
+    TotalAmount DECIMAL(10, 2)
+);
+
+-- Insert sample data into Orders
+INSERT INTO Orders (CustomerID, OrderDate, TotalAmount)
+VALUES 
+(1, '2024-01-01 10:00:00', 250.75),
+(2, '2024-01-15 14:30:00', 150.50),
+(3, '2024-02-05 09:45:00', 350.20),
+(4, '2024-03-10 16:00:00', 220.90),
+(5, '2023-12-28 11:00:00', 180.00),
+(6, '2024-01-01 14:00:00', 299.99);
+
+select * FROM Orders;
+
+SELECT * FROM Orders WHERE OrderDate = '2024-01-01 10:00:00';
+
+-- SQL Query to Insert Multiple Rows
