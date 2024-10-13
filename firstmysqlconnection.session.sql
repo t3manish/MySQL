@@ -296,3 +296,70 @@ select * FROM Orders;
 SELECT * FROM Orders WHERE OrderDate = '2024-01-01 10:00:00';
 
 -- SQL Query to Insert Multiple Rows
+CREATE TABLE employee_details(
+   emp_id VARCHAR(8),
+   emp_name VARCHAR(20),
+   emp_dept_id VARCHAR(20),
+   emp_age INT);
+
+INSERT INTO employee_details VALUES('E40001','PRADEEP','E101',36);
+INSERT INTO employee_details VALUES('E40002','ASHOK','E102',28);
+INSERT INTO employee_details VALUES('E40003','PAVAN KUMAR','E103',28); 
+
+SELECT * FROM employee_details;
+
+INSERT INTO employee_details VALUES('E40005','THAMAN','E103',26),
+('E40006','HARSH','E101',25),
+  ('E40007','SAMHITH','E102',26);
+
+-- SQL UPDATE Statement
+CREATE TABLE Customer(
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(50),
+    LastName VARCHAR(50),
+    Country VARCHAR(50),
+    Age int(2),
+  Phone int(10)
+);
+
+-- Insert some sample data into the Customers table
+INSERT INTO Customer (CustomerID, CustomerName, LastName, Country, Age, Phone)
+VALUES (1, 'Shubham', 'Thakur', 'India','23','789456123'),
+       (2, 'Aman ', 'Chopra', 'Australia','21','789456127'),
+       (3, 'Naveen', 'Tulasi', 'Sri lanka','24','789456126'),
+       (4, 'Aditya', 'Arpan', 'Austria','21','789456125'),
+       (5, 'Nishant. Salchichas S.A.', 'Jain', 'Spain','22','789456124'); 
+       
+Select * from Customer;
+
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Customer SET CustomerName = 'Manish' WHERE Age = 22;
+UPDATE Customer SET CustomerName = 'Satyam', 
+Country = 'USA' WHERE CustomerID = 1;
+
+-- SQL DELETE Statement
+CREATE TABLE GFG_Employees (
+   id INT PRIMARY KEY,
+   name VARCHAR (20) ,
+   email VARCHAR (25),
+   department VARCHAR(20)
+);
+INSERT INTO GFG_Employees (id, name, email, department) VALUES 
+(1, 'Jessie', 'jessie23@gmail.com', 'Development'),
+(2, 'Praveen', 'praveen_dagger@yahoo.com', 'HR'),
+(3, 'Bisa', 'dragonBall@gmail.com', 'Sales'),
+(4, 'Rithvik', 'msvv@hotmail.com', 'IT'),
+(5, 'Suraj', 'srjsunny@gmail.com', 'Quality Assurance'),
+(6, 'Om', 'OmShukla@yahoo.com', 'IT'),
+(7, 'Naruto', 'uzumaki@konoha.com', 'Development');
+Select * From GFG_Employees
+
+DELETE FROM GFG_Employees WHERE NAME = 'Rithvik';  
+
+DELETE FROM GFG_Employees 
+WHERE department = 'Development';
+
+DELETE FROM GFG_Employees;
+
+-- -----------------------------------------------------------------------------------------
+-- SQL Clauses
